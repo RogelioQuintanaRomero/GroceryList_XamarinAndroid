@@ -24,7 +24,13 @@ namespace GroceryList
 		{
 			int position = e.Position; // e.Position is the position in the list of the item the user touched
 
-			// TODO
-		}
+            //crear una nueva intent
+            var intent = new Intent(this, typeof(DetailsActivity));
+            // ingresar datos extras a inten a travez de clave y valor
+            intent.PutExtra("ItemPosition", position);
+            // iniciar actividad
+            StartActivity(intent);
+             // TODO
+        }
 	}
 }

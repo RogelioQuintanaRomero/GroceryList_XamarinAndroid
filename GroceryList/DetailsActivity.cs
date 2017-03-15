@@ -11,8 +11,8 @@ namespace GroceryList
 		{
 			base.OnCreate(bundle);
 			SetContentView(Resource.Layout.Details);
-
-			int position = 0;
+            // para recuperar el item lo optenemos con la pripiedad GetIntExtra heredado de Intent
+			int position = base.Intent.GetIntExtra( "ItemPosition", -1);
 
 			// TODO
 
