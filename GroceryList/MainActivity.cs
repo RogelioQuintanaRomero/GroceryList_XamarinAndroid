@@ -36,7 +36,12 @@ namespace GroceryList
 		void OnAddItemClick(object sender, EventArgs e)
 		{
             var intent = new Intent(this, typeof(AddItemActivity));
-            StartActivity(intent);
+            //StartActivity(intent);
+            //para recibir resultado no ocupamos StarActivity
+            //para recibir notificacion ocupamos el siguiente metodo agregando intent como primer parametro y 100 como segundo parametro
+            // en espera del resultado
+            StartActivityForResult(intent, 100);
+            // al cargar este parametro continua su funcion el metodo OnAtivityResult para recibir los resutados qeu se espera obtener
             // TODO
         }
 
@@ -52,6 +57,14 @@ namespace GroceryList
             //var intent = new Intent(this, typeof(ItemsActivity));
             //StartActivity(intent);
             // TODO
+            if (requestCode == 100 && resultCode == Result.Ok)
+            {
+                // declaramos dos variables e lso qeu recibiremos parametros 
+                string name = data.GetStringExtra("ItemName");
+                int count = data.GetIntExtra("ItemCount",-1);
+                //creamos nevo item en el que agregaremos los dos valores que recibimos
+                Items.Add(new Item(name, count));
+            }
         }
 	}
 }
